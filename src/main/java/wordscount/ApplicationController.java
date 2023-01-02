@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class ApplicationController {
 
-	WordsCounter counter;
+	private final String FILES_LOCATION = "C:/Users/pe6o0/eclipse-workspace/words-count/src/main/resources/static/files/";
+
+	private WordsCounter counter;
 
 	public ApplicationController(WordsCounter counter) {
 		this.counter = counter;
@@ -28,30 +30,23 @@ public class ApplicationController {
 	@PostMapping("/countWords")
 	public String count(@RequestParam String input, @RequestParam MultipartFile file, Model model) {
 
-		if (!file.getOriginalFilename().equals("")) {
+		try {
 
-			File path;
+			File path = new File(FILES_LOCATION + file.getOriginalFilename());
+			path.createNewFile();
 
-			try {
+			FileOutputStream output = new FileOutputStream(path);
+			output.write(file.getBytes());
+			output.close();
 
-				path = new File("C:/Users/pe6o0/eclipse-workspace/words-count/src/main/resources/files/" + file.getOriginalFilename());
-				path.createNewFile();
-				
-				FileOutputStream output = new FileOutputStream(path);
-				output.write(file.getBytes());
-				output.close();
-				
-				model.addAttribute("countTopTen", counter.topTenWords(path.getAbsolutePath()));
+			model.addAttribute("count", counter.count(path.getAbsolutePath()));
+			model.addAttribute("countTopTen", counter.topTenWords(path.getAbsolutePath()));
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		else {
+		} catch (IOException e) {
+			model.addAttribute("count", counter.count(input));
 			model.addAttribute("countTopTen", counter.topTenWords(input));
 		}
+
 		return "view";
 	}
 }

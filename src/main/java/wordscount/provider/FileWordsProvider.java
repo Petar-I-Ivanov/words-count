@@ -13,19 +13,23 @@ public class FileWordsProvider implements WordsProvider {
 
 	@Override
 	public String[] getWords(String text) {
-		
-		String actualText = "";
-		
+
+		return convertToText(text).split("[\t\s\r\n,.-]");
+	}
+
+	private String convertToText(String path) {
+
 		try {
-			File file = new File(text);
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			actualText = br.lines().collect(Collectors.joining());
+
+			BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+			String text = br.lines().collect(Collectors.joining());
+
 			br.close();
 			
+			return text;
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
-		
-		return actualText.split("[\t\s\r\n,.-]");
-	}}
+	}
+}

@@ -18,40 +18,34 @@ import wordscount.provider.WordsProvider;
 @Component
 public class WordsCounter {
 	
-	@Autowired WordsProvider urlWordsProvider;
-	@Autowired WordsProvider stringWordsProvider;
-	@Autowired WordsProvider fileWordsProvider;
+	@Autowired private WordsProvider urlWordsProvider;
+	@Autowired private WordsProvider stringWordsProvider;
+	@Autowired private WordsProvider fileWordsProvider;
 	
-	public Long count(String text) {
+	public int count(String text) {
 		
-		WordsProvider provider = pickWordsProvider(text);
-	    return (long) provider.getWords(text).length;
+	    return  pickWordsProvider(text)
+	    			.getWords(text).length;
 	}
 	
 	public Map<String, Integer> topTenWords(String text) {
 		
 		WordsProvider provider = pickWordsProvider(text);
 		
-		return wordCounts(provider.getWords(text))
+		return setWordsCountMap(provider.getWords(text))
 				.entrySet().stream()
 				.sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
 				.limit(10)
 				.collect(Collectors.toMap(Entry::getKey, Entry::getValue));
  	}
 	
-	private Map<String, Integer> wordCounts(String[] words) {
+	private Map<String, Integer> setWordsCountMap(String[] words) {
 		
 		Map<String, Integer> counter = new HashMap<>();
 		
 		Arrays.stream(words).forEach(word -> {
 			var count = counter.get(word);
-			
-			if (count == null) {
-				count = 1;
-			} else {
-				count++;
-			}
-			
+			count = (count == null) ? 1 : count + 1;
 			counter.put(word, count);
 		});
 		
