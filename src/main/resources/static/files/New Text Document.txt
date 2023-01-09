@@ -1,0 +1,52 @@
+// form.js
+
+import React, { useState } from 'react';
+
+export function Form({ setWords }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // make a request to get the words here
+    setWords(new Map(response.words));
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Enter some text:
+        <input type="text" />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+
+// word-display.js
+
+import React from 'react';
+
+export function WordDisplay(props) {
+  return (
+    <div>
+      {Array.from(props.words, ([key, value]) => (
+        <div key={key}>{key}: {value}</div>
+      ))}
+    </div>
+  );
+}
+
+// app.js
+
+import React, { useState } from 'react';
+import { Form } from './form';
+import { WordDisplay } from './word-display';
+
+export function App() {
+  const [words, setWords] = useState(new Map());
+
+  return (
+    <div>
+      <Form setWords={setWords} />
+      <WordDisplay words={words} />
+    </div>
+  );
+}

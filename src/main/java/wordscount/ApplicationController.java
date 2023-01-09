@@ -3,12 +3,15 @@ package wordscount;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -26,12 +29,38 @@ public class ApplicationController {
 	public String getView() {
 		return "view";
 	}
-
+	
 	@PostMapping("/countWords")
-	public String count(@RequestParam String input, @RequestParam MultipartFile file, Model model) {
-
+	public String count(@RequestParam String text,
+						@RequestParam MultipartFile file,
+						Model model) {
+		
+		String input = (file.getOriginalFilename().equals(""))
+						? text
+						: getFilePath(file);
+		
+		model.addAttribute("count", counter.count(input));
+		model.addAttribute("countTopTen", counter.topTenWords(input));
+		
+		return "view";
+	}
+	
+	
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@PostMapping("/getTopWords")
+	@ResponseBody
+	public Map<String, Integer> count(@RequestParam String text,
+									  @RequestParam(required = false) MultipartFile file) {
+		
+		return (file == null)
+				? counter.topTenWords(text)
+				: counter.topTenWords(getFilePath(file));
+	}
+	
+	private String getFilePath(MultipartFile file) {
+		
 		try {
-
 			File path = new File(FILES_LOCATION + file.getOriginalFilename());
 			path.createNewFile();
 
@@ -39,14 +68,10 @@ public class ApplicationController {
 			output.write(file.getBytes());
 			output.close();
 
-			model.addAttribute("count", counter.count(path.getAbsolutePath()));
-			model.addAttribute("countTopTen", counter.topTenWords(path.getAbsolutePath()));
-
+			return path.getAbsolutePath();
+			
 		} catch (IOException e) {
-			model.addAttribute("count", counter.count(input));
-			model.addAttribute("countTopTen", counter.topTenWords(input));
+			return null;
 		}
-
-		return "view";
 	}
 }
