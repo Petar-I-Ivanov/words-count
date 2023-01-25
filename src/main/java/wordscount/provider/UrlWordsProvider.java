@@ -19,7 +19,7 @@ public class UrlWordsProvider implements WordsProvider {
 		        
 			} catch (IOException e) {
 				return null;
-			} 
+			}
 	}
 
 }

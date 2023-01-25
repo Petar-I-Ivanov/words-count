@@ -1,1 +1,943 @@
-testtttasda sdas fas 
+Stack Overflow
+About
+Products
+For Teams
+Search…
+Join Stack Overflow to find the best answer to your technical question, help others answer theirs.
+
+Home
+PUBLIC
+Questions
+Tags
+Users
+Companies
+COLLECTIVES
+Explore Collectives
+TEAMS
+Stack Overflow for Teams – Start collaborating and sharing organizational knowledge. 
+Maven clean install: Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0:resources
+Asked 1 year, 11 months ago
+Modified 1 month ago
+Viewed 101k times
+
+50
+
+
+I don´t know what´s the problem. Trying to install maven for a college project. I already installed maven as instructed here. Picture Environmental Variables, maven version in cmd And I also tried to delete the .m2 file. When I try to install maven over the plugin in InteliJ, I get the message: "process terminated" with no extra info. Then I tried to install over the terminal with mvn clean install and i got this.
+
+[INFO] Scanning for projects...
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for com.college:sprinttool:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-data-jpa:jar -> duplicate declaration of version (?) @ line 50, column 15
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-test:jar -> duplicate declaration of version (?) @ line 55, column 15
+[WARNING]
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING]
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING]
+[INFO]
+[INFO] -------------------< com.college:sprinttool >--------------------
+[INFO] Building sprinttool 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ sprinttool ---
+[INFO] Deleting E:\Code Practices\sprinttool\sprinttool\target
+[INFO]
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ sprinttool ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.740 s
+[INFO] Finished at: 2021-01-26T22:56:19+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0:resources (default-resources) on project sprinttool: Input length = 1 -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+Then I ran "mvn clean install -X" for more Information and it gives out this in addition.
+
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:215)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:156)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:105)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:957)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:193)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:64)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:564)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)
+Caused by: org.apache.maven.plugin.MojoExecutionException: Input length = 1
+    at org.apache.maven.plugins.resources.ResourcesMojo.execute (ResourcesMojo.java:362)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:137)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:210)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:156)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:105)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:957)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:193)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:64)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:564)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)
+Caused by: org.apache.maven.shared.filtering.MavenFilteringException: Input length = 1
+    at org.apache.maven.shared.filtering.DefaultMavenFileFilter.copyFile (DefaultMavenFileFilter.java:113)
+    at org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering.filterResources (DefaultMavenResourcesFiltering.java:262)
+    at org.apache.maven.plugins.resources.ResourcesMojo.execute (ResourcesMojo.java:356)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:137)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:210)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:156)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:105)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:957)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:193)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:64)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:564)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)
+Caused by: java.nio.charset.MalformedInputException: Input length = 1
+    at java.nio.charset.CoderResult.throwException (CoderResult.java:274)
+    at sun.nio.cs.StreamDecoder.implRead (StreamDecoder.java:352)
+    at sun.nio.cs.StreamDecoder.read (StreamDecoder.java:188)
+    at java.io.InputStreamReader.read (InputStreamReader.java:181)
+    at java.io.BufferedReader.read1 (BufferedReader.java:210)
+    at java.io.BufferedReader.read (BufferedReader.java:287)
+    at java.io.BufferedReader.fill (BufferedReader.java:161)
+    at java.io.BufferedReader.read (BufferedReader.java:182)
+    at org.apache.maven.shared.filtering.BoundedReader.read (BoundedReader.java:85)
+    at org.apache.maven.shared.filtering.MultiDelimiterInterpolatorFilterReaderLineEnding.read (MultiDelimiterInterpolatorFilterReaderLineEnding.java:235)
+    at org.apache.maven.shared.filtering.MultiDelimiterInterpolatorFilterReaderLineEnding.read (MultiDelimiterInterpolatorFilterReaderLineEnding.java:197)
+    at java.io.Reader.read (Reader.java:229)
+    at org.apache.maven.shared.utils.io.IOUtil.copy (IOUtil.java:199)
+    at org.apache.maven.shared.utils.io.IOUtil.copy (IOUtil.java:181)
+    at org.apache.maven.shared.utils.io.FileUtils.copyFile (FileUtils.java:1908)
+    at org.apache.maven.shared.filtering.DefaultMavenFileFilter.copyFile (DefaultMavenFileFilter.java:98)
+    at org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering.filterResources (DefaultMavenResourcesFiltering.java:262)
+    at org.apache.maven.plugins.resources.ResourcesMojo.execute (ResourcesMojo.java:356)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:137)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:210)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:156)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:148)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:117)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:81)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:56)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:128)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:305)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:192)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:105)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:957)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:289)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:193)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:64)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:564)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:282)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:225)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:406)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:347)
+[ERROR]
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+I honestly have no clue what it is telling me. Is it because there is something wrong with my pom.xml? Pls help me! Thank you in advance.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.college</groupId>
+    <artifactId>sprinttool</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>sprintplanningtool</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>15</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.3</version>
+        </dependency-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+            </exclusion>
+        </exclusions>
+        </dependency>
+
+        <!--dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency-->
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-bom</artifactId>
+            <version>5.3.3.RELEASE</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>6.0.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.6</version>
+        </dependency-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+Edit: I used the spring boot intitializer to create the project.
+
+javaspringspring-bootmavenmaven-resources-plugin
+Share
+Improve this question
+Follow
+edited Apr 26, 2022 at 13:08
+Jim Tough's user avatar
+Jim Tough
+14.5k2323 gold badges7272 silver badges9494 bronze badges
+asked Jan 26, 2021 at 22:19
+CodingStudent's user avatar
+CodingStudent
+65811 gold badge55 silver badges99 bronze badges
+You are filtering items which should not being filtered. Changing the version of the plugin does not help it only covers the issue. Furthermore the exclusion for JUnit Vintage engine is not necessary anymore since Spring Boot 2.4.0. Remove also the versions for things which are handled by Spring Boot... and remove plugin dependencies and remove source/target configuration because you have use <jave.version>.. ... – 
+khmarbaise
+ Jan 27, 2021 at 9:24
+1
+The solution of @khmarbaise doesn't work for me. Still the same problem. After some research I found this Issue at the Jira of Maven. I'll go down to Version 3.1.0 until they fixed it. issues.apache.org/jira/projects/MRESOURCES/issues/… To wich I came through this issue: github.com/spring-projects/spring-boot/issues/24346 – 
+Björn
+ Jan 28, 2021 at 12:24 
+see also: issues.apache.org/jira/projects/MRESOURCES/issues/… – 
+Stephan
+ Feb 16, 2021 at 12:39
+@khmarbaise I'm facing the same issue in my project and only text files are filtered. The project doesn't use Spring neither. – 
+Stephan
+ Feb 16, 2021 at 12:40 
+Since maven-resources-plugin 3.2.0, setting the value of propertiesEncoding can fix the problem for properties files filtered. See : maven.apache.org/plugins/maven-resources-plugin/examples/… – 
+Guillaume Husta
+ May 31, 2022 at 14:07
+Add a comment
+18 Answers
+Sorted by:
+
+Highest score (default)
+
+94
+
+
+It might be a new bug coming with some latest release of Spring-boot (and then : Spring).
+
+I had it. The workaround is to put in your pom.xml this corrected dependency :
+
+<!-- Pour contourner un bug à la génération par Spring-boot 2.4.x : 
+Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0:resources (default-resources) on project application-etude: Input length = 1 -->               
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.1.0</version>
+</plugin>               
+But this is a temporary workaround to 'save you' at the time the trouble fall upon you.
+
+The way to correct the trouble correctly is to ensure that your properties files are now correctly encoded in UTF-8.
+
+Because the underlying cause that makes this problem appearing is the presence of "junk chars" replacing accented characters when ISO-8859-1 (or other) properties files are considered as UTF-8 ones by Spring, while they aren't.
+
+Share
+Improve this answer
+Follow
+edited Aug 26, 2022 at 3:56
+answered Jan 26, 2021 at 22:28
+Marc Le Bihan's user avatar
+Marc Le Bihan
+1,60011 gold badge1818 silver badges3737 bronze badges
+3
+The problem is that items being filtered which should not being filter. The downgrade only covers the real problem. – 
+khmarbaise
+ Jan 27, 2021 at 9:25
+2
+No that work-a-round covers a problem with filtering...That means someone is filtering things which should not being filtered which can cause real issue. So this does not help... and No it's not the responsibility of the Spring team..it's the responsibility of the user... – 
+khmarbaise
+ Jan 27, 2021 at 9:35
+7
+See @khmarbaise answer below it addresses the root cause of the problem. To see the files that are not correctly handled by the resource plugin use the -X -e flags when building the project. – 
+Mihkel Selgal
+ May 19, 2021 at 11:07
+1
+As far as I can tell, this issue has nothing to do with spring-boot but the maven-resources-plugin version 3.2.0. Reverting to 3.1.0 solved a build issue. Note: in a build that does not use spring-boot – 
+Ceki
+ Jul 24, 2021 at 16:48
+3
+The -X -e works to find out the problematic file. It would be fine if the plugin itself stated the right error, instead of Input length = 1 – 
+Faliorn
+ Sep 16, 2021 at 12:21
+Show 3 more comments
+
+35
+
+
+The root cause of the exception is that some resources contain resources which should not filtered (aka binary). The correct solution is to define an exclude for file extensions which should not filtered like the following:
+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <nonFilteredFileExtensions>
+            <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+            <nonFilteredFileExtension>swf</nonFilteredFileExtension>
+          </nonFilteredFileExtensions>
+        </configuration>
+      </plugin>
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+Share
+Improve this answer
+Follow
+answered Jan 28, 2021 at 8:40
+khmarbaise's user avatar
+khmarbaise
+90.3k2828 gold badges182182 silver badges227227 bronze badges
+1
+Well, if I go with your solution. The Project would not build like before? – 
+CodingStudent
+ Jan 29, 2021 at 17:01
+And what does that mean: The Project would not build like before? – 
+khmarbaise
+ Jan 29, 2021 at 17:09
+1
+It means, It did build after I used the solution of Marc Le Bihan. But now it doesn´t. – 
+CodingStudent
+ Jan 30, 2021 at 20:42
+1
+@khmarbaise But what resources are you talking about that should be filtered ? The opener of the post have none to filter. – 
+Marc Le Bihan
+ Feb 3, 2021 at 12:09 
+11
+Yeah, this is the correct answer. To find out which files are causing the exception you should run your build with -X -e flags i.e mvn clean package -X -e -P some_profile – 
+Mihkel Selgal
+ May 19, 2021 at 11:01
+Show 1 more comment
+
+25
+
+
+I had the same problem and fixed it by adding in the pom.xml :
+
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+Here is the comment that help me solved the problem : https://github.com/spring-projects/spring-boot/issues/24346#issuecomment-740345146
+
+Share
+Improve this answer
+Follow
+answered Mar 16, 2021 at 2:46
+TahitianGabriel's user avatar
+TahitianGabriel
+64366 silver badges1818 bronze badges
+did not work for me – 
+umesh
+ Jul 12, 2022 at 3:26
+While downgrading the plugin version as mentioned in here did work for me, it seems as though the newer versions of maven-resource-plugin require a matching sourceEncoding. So, this answer feels more future proof to me when using version 3.2.0+ – 
+CtC
+ Dec 6, 2022 at 2:32
+Add a comment
+
+19
+
+
+In my case, the error happened because I had properties files encoded with ANSI, while maven was trying to use UTF-8. I fixed it by converting my properties files to UTF-8, and then running mvn clean compile.
+
+Share
+Improve this answer
+Follow
+answered Aug 25, 2021 at 13:31
+henriquefalc's user avatar
+henriquefalc
+30122 silver badges33 bronze badges
+Thank, In Eclipse I go to Terminal, CD <folder> then mvn clean compile, then Refresh my project and it works – 
+Hernaldo Gonzalez
+ Apr 20, 2022 at 19:51
+Add a comment
+
+15
+
+
+In my case, the error was due to accents on "application.properties"
+
+It would certainly be far easier to fix such errors if the tool simply gave a message saying that a certain file contains invalid characters...
+
+For the record, the relevant log part, after running mvn clean package -e -X, was this one:
+
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'application.properties'.
+[DEBUG] filtering D:\Java\PreVendaAPI\src\main\resources\application.properties to D:\Java\PreVendaAPI\target\classes\application.properties
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+Share
+Improve this answer
+Follow
+answered Oct 14, 2021 at 18:40
+Haroldo_OK's user avatar
+Haroldo_OK
+6,33633 gold badges4141 silver badges7979 bronze badges
+1
+That's what did it for me, doesn't help that the error itself has no mention of the conversion error, thank you for the fix! – 
+ArturT
+ Apr 21, 2022 at 20:23
+1
+Your log snippet hinted me to the error causing file. – 
+Linosch Artox
+ Jul 14, 2022 at 5:37
+Add a comment
+
+8
+
+
+The problem is with the maven-resources-plugin. Newer versions of this plugin are less lenient than the older versions. Unfortunately, the error message that is displayed when the Maven build fails (Input length = 1) is only helpful if you recognize it from previous experience with character set problems in Java.
+
+You can add some options to the Maven build command so it will display DEBUG level output and a full stacktrace on build failures. Try this as your first step in diagnosing the root cause:
+
+mvn -e -X clean test
+It will output a LOT of info to the console during the build with these options turned on. Just wait until the failure happens and check the end of the console output. You should see a full stacktrace at the end that will make more sense. Just before the stacktrace, you should also see the name of the file in your project that caused the error. For me, I saw output like this:
+
+directory C:\GITROOT\conndev\repos\conn-lamp-server\src\test\resources
+excludes []
+includes []
+[DEBUG] ignoreDelta true
+[INFO] Copying 3 resources
+[DEBUG] Copying file application-inttest.properties
+[DEBUG] file application-inttest.properties has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'application-inttest.properties'.
+[DEBUG] filtering C:\GITROOT\conndev\repos\conn-lamp-server\src\test\resources\application-inttest.properties to C:\GITROOT\conndev\repos\conn-lamp-server\target\test-classes\application-inttest.properties
+[DEBUG] Copying file DummyExcelFile.xls
+[DEBUG] file DummyExcelFile.xls has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'DummyExcelFile.xls'.
+[DEBUG] filtering C:\GITROOT\conndev\repos\conn-lamp-server\src\test\resources\DummyExcelFile.xls to C:\GITROOT\conndev\repos\conn-lamp-server\target\test-classes\DummyExcelFile.xls
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  37.927 s
+[INFO] Finished at: 2022-04-26T10:11:09-03:00
+[INFO] ------------------------------------------------------------------------
+Now I know that a file in my test resources directory was the problem:
+
+src\test\resources\DummyExcelFile.xls
+Older versions of the resources plugin must have been quietly suppressing the problem. I won't include the full stacktrace here, but this is the important line from the stacktrace:
+
+Caused by: java.nio.charset.MalformedInputException: Input length = 1
+I've seen this before. It happens when a text file cannot be read by a Java 'reader' class because the file contains one or more characters that are invalid for the character set used by the reader. In my case, it was trying to read a binary file as text, so that was never going to work! The same problem could happen if you have a text file that contains unusual characters (such as those from European languages with accents) and those characters are not valid for the character set you are using (such as UTF-8). All these problems can be solved with some POM configuration.
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <configuration>
+                <propertiesEncoding>UTF-8</propertiesEncoding>
+                <nonFilteredFileExtensions>
+                    <nonFilteredFileExtension>xls</nonFilteredFileExtension>
+                    <nonFilteredFileExtension>zip</nonFilteredFileExtension>
+                </nonFilteredFileExtensions>
+            </configuration>
+        </plugin>
+If you are using a different character set from UTF-8, just substitute yours in the XML snippet above. Do the same for any file extensions that you want the maven-resource-plugin to ignore when it does filtering.
+
+Note that I have intentionally omitted the <version> for the maven-resources-plugin block above. This is because I am using the spring-boot-starter-parent in my POM and the version of many dependencies is inherited from the parent. If you do not use a parent, then you will have to explicitly set the version you want to use.
+
+Share
+Improve this answer
+Follow
+answered Apr 26, 2022 at 13:53
+Jim Tough's user avatar
+Jim Tough
+14.5k2323 gold badges7272 silver badges9494 bronze badges
+Add a comment
+
+4
+
+
+I had the same error. After removing german umlauts ('ü') from comments in my propertie files, they should be filtered, the problem is gone!
+
+Share
+Improve this answer
+Follow
+answered Jan 19, 2022 at 14:41
+Damian's user avatar
+Damian
+4111 bronze badge
+Add a comment
+
+3
+
+
+I faced the same issue, and fixed it using the below changes in my pom.xml build plugin.
+
+<project>
+...
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+Share
+Improve this answer
+Follow
+answered May 19, 2021 at 17:10
+Asif Iquebal Ajazi's user avatar
+Asif Iquebal Ajazi
+12577 bronze badges
+Thank you, it worked for me. I also had to add maven-compiler-plugin and maven-war-plugin with the same version. – 
+Roberto Rodriguez
+ Oct 26, 2022 at 1:31
+Add a comment
+
+2
+
+
+You need exclude binary resourses.
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.2.0</version>
+    <configuration>
+        <propertiesEncoding>UTF-8</propertiesEncoding>
+        <nonFilteredFileExtensions>
+            <nonFilteredFileExtension>xls</nonFilteredFileExtension>
+            <nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+        </nonFilteredFileExtensions>
+    </configuration>
+</plugin>
+Share
+Improve this answer
+Follow
+edited Dec 1, 2021 at 13:36
+christopher.online's user avatar
+christopher.online
+2,57533 gold badges2727 silver badges5050 bronze badges
+answered Dec 1, 2021 at 12:27
+Anri Unis's user avatar
+Anri Unis
+2111 bronze badge
+Add a comment
+
+2
+
+
+By default, maven-resources-plugin uses project.build.sourceEncoding when filtering resources (which defaults to UTF-8).
+
+The java standard for .properties files requires ISO-8859-1 encoding.
+
+To resolve this, you can explicitely configure how .properties Files should be filtered:
+
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-resources-plugin</artifactId>
+  <version>3.2.0</version>
+  <configuration>
+    <propertiesEncoding>ISO-8859-1</propertiesEncoding>
+  </configuration>
+</plugin>
+This is also described in the official documentation of the plugin: https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+
+Share
+Improve this answer
+Follow
+answered Aug 2, 2022 at 7:31
+eidottermihi's user avatar
+eidottermihi
+21311 silver badge1010 bronze badges
+Add a comment
+
+1
+
+
+Some of your resources contains a character not in the ISO-8859-1 codepage, and this can cause disturbance here:
+
+   at java.io.Reader.read (Reader.java:229)
+   at org.apache.maven.shared.utils.io.IOUtil.copy (IOUtil.java:199)
+A typical error might be an accentuated character in a .properties file.
+
+Share
+Improve this answer
+Follow
+answered Jun 18, 2021 at 7:15
+Charles Tempo's user avatar
+Charles Tempo
+48644 silver badges77 bronze badges
+Add a comment
+
+1
+
+
+This message came up today, here is what I did to resolve it:
+
+I used mvn to analyze the resources like this:
+
+mvn -X process-test-resources
+This way mvn returned the name of the file wich was causing the error:
+
+[DEBUG] filtering .../messages.properties
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  x
+[INFO] Finished at: y
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0:resources (default-resources) on foo: Input length = 1 -> 
+Turned out messages.properties contained special chars which had not been escaped properly. So I escaped them in the i18n-file and after that I was able to build again.
+
+Share
+Improve this answer
+Follow
+answered May 31, 2022 at 11:13
+Lama's user avatar
+Lama
+2,78655 gold badges4242 silver badges5757 bronze badges
+Add a comment
+
+0
+
+
+I Belive that error heppens because have some problems of compatibility R: The possible solution is to insert this plugin in pom.xml
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.1.0</version>
+</plugin>
+Share
+Improve this answer
+Follow
+edited Jun 27, 2022 at 16:47
+helvete's user avatar
+helvete
+2,32599 gold badges3737 silver badges3636 bronze badges
+answered Jun 23, 2022 at 3:00
+Laura Suzany's user avatar
+Laura Suzany
+111 bronze badge
+Add a comment
+
+0
+
+
+For me stopping the server helped
+
+(On Windows 10) npx kill-port your_port
+Share
+Improve this answer
+Follow
+edited Jun 29, 2022 at 6:45
+Procrastinator's user avatar
+Procrastinator
+2,3962424 gold badges2727 silver badges3434 bronze badges
+answered Jun 24, 2022 at 22:46
+uchpochmak's user avatar
+uchpochmak
+2155 bronze badges
+Add a comment
+
+-1
+
+
+I think you are defining application.property and application.yml at the same time. If you want to use both of them, please try plug the maven-resources-plugin
+
+Share
+Improve this answer
+Follow
+answered Aug 5, 2021 at 22:35
+Mark's user avatar
+Mark
+1533 bronze badges
+Add a comment
+
+-1
+
+
+Using this dependency solved this problem of mine
+
+<dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.2.0</version>
+</dependency>
+Share
+Improve this answer
+Follow
+answered Mar 6, 2022 at 14:47
+Garikina Rajesh's user avatar
+Garikina Rajesh
+41122 silver badges55 bronze badges
+Add a comment
+
+-1
+
+
+I had the same error when writing non utf-8 characters in a comment in application.properties file. I deleted those characters and it's working !
+
+Share
+Improve this answer
+Follow
+answered Apr 29, 2022 at 12:01
+g.chataing's user avatar
+g.chataing
+111 bronze badge
+1
+As it’s currently written, your answer is unclear. Please edit to add additional details that will help others understand how this addresses the question asked. You can find more information on how to write good answers in the help center. – 
+Community
+Bot
+ Apr 30, 2022 at 0:51
+Add a comment
+
+-2
+
+
+<properties>
+        <java.version>13</java.version>
+        <project.build.sourceEncoding>UTF-8 </project.build.sourceEncoding>
+</properties>
+Use this in pom.xml file that will definetly work.
+
+*Caution this syntax only works from java version 13 and later Use the previous syntax, if you are using older java versions
+
+<properties>
+        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>13</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+Share
+Improve this answer
+Follow
+edited Nov 30, 2022 at 16:05
+Rejja Kubzek's user avatar
+Rejja Kubzek
+344 bronze badges
+answered Oct 18, 2021 at 9:38
+Sushant Maddeshiya's user avatar
+Sushant Maddeshiya
+111 bronze badge
+Your answer could be improved with additional supporting information. Please edit to add further details, such as citations or documentation, so that others can confirm that your answer is correct. You can find more information on how to write good answers in the help center. – 
+Community
+Bot
+ Oct 18, 2021 at 10:27
+1
+I doubt you put this syntax in a .properties file. Can you doublecheck, please? – 
+R.A
+ Oct 18, 2021 at 13:04
+@R.A you're right, this is most likely the <properties> element in pom.xml – 
+Pieter De Bie
+ Mar 31, 2022 at 12:21 
+Add a comment
+Highly active question. Earn 10 reputation (not counting the association bonus) in order to answer this question. The reputation requirement helps protect this question from spam and non-answer activity.
+Not the answer you're looking for? Browse other questions tagged javaspringspring-bootmavenmaven-resources-plugin or ask your own question.
+The Overflow Blog
+AI applications open new security vulnerabilities
+How chaos engineering preps developers for the ultimate game day (Ep. 531)
+Featured on Meta
+2022 Community-a-thon Recap
+Temporary policy: ChatGPT is banned
+Should we burninate the [gpl] tag?
+We’re bringing advertisements for technology courses to Stack Overflow
+Introducing a new close reason specifically for non-English questions
+Linked
+282
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured
+35
+Maven: mvn command not found
+0
+org.apache.maven.plugins:maven-resources-plugin:3.2.0:resources fails with MalformedInputException
+Related
+342
+Maven is not working in Java 8 when Javadoc tags are incomplete
+5
+Failed to execute goal org.apache.maven.plugins:maven-site-plugin:
+4
+Getting null pointer exception when using any annotation other than @BeforeClass
+2
+Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project siriproject: Compilation failure
+1
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile Spring Cloud
+1
+How to fix maven exception : [ERROR] Failed to execute goal org.apache.maven.plugins:maven-clean-plugin:2.6.1:clean
+4
+Maven shade plugin -Failed to execute goal
+0
+AEM Maven Failed to execute which is to install com.day.jcr.vault:content-package-maven-plugin
+Hot Network Questions
+What are the ethics of creating educational content as an advanced undergraduate?
+Sci-fi book; nuclear bomb destroys the Panama Isthmus
+Why keep expending SpaceX boosters?
+How often do people who make complaints that lead to acquittals face repercussions for making false complaints?
+Stockfish destroys Daniel Naroditsky's endgame variation (from his book (Mastering Positional Chess))
+How to generate -5 V from +5 V and GND?
+Why did Ravenel define a ring spectrum to be flat if its smash-square splits into copies of itself?
+Is "Good boy!" still appropriate for a child?
+How fast can you radically change society without violence? (And when has it happened?)
+How to program the CPU when making a small microcomputer?
+meaning of the small circle at the end of the decrescendo?
+What is the signficance and intended purpose of variable assignments in first order logic?
+Removing a 1970s Schwinn Bottom Bracket
+Implement a 2fuck interpreter
+The shape of the moon limb/crescent (terminator line)
+Follow up question on a block on an accelerating inclined plane
+Is there a program implementation for generating all non-isomorphic graphs with a given degree sequence?
+Introduction of group action as morphism of groups
+When did the U.S. Army start saying "oh-six-hundred" for "6 AM"?
+What is SpaceX doing differently with Starship to avoid it exploding like the N1?
+How do you make a bad ending satisfying for the readers?
+Overcoming Lego Addiction
+Why did the Soviet Union decide to use 33 small engines instead of a few large ones on the N1?
+Is it possible for a star cluster to be composed of main sequence stars?
+ Question feed
+
+STACK OVERFLOW
+Questions
+Help
+PRODUCTS
+Teams
+Advertising
+Collectives
+Talent
+COMPANY
+About
+Press
+Work Here
+Legal
+Privacy Policy
+Terms of Service
+Contact Us
+Cookie Settings
+Cookie Policy
+STACK EXCHANGE NETWORK
+Technology
+Culture & recreation
+Life & arts
+Science
+Professional
+Business
+API
+Data
+Blog
+Facebook
+Twitter
+LinkedIn
+Instagram
+Site design / logo © 2023 Stack Exchange Inc; user contributions licensed under CC BY-SA. rev 2023.1.25.43190

@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,28 +24,10 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/")
-	public String getView() {
-		return "view";
+	public String index() {
+		return "forward:/index.html";
 	}
 	
-	@PostMapping("/countWords")
-	public String count(@RequestParam String text,
-						@RequestParam MultipartFile file,
-						Model model) {
-		
-		String input = (file.getOriginalFilename().equals(""))
-						? text
-						: getFilePath(file);
-		
-		model.addAttribute("count", counter.count(input));
-		model.addAttribute("countTopTen", counter.topTenWords(input));
-		
-		return "view";
-	}
-	
-	
-	
-	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/getTopWords")
 	@ResponseBody
 	public Map<String, Integer> count(@RequestParam String text,
@@ -56,6 +36,16 @@ public class ApplicationController {
 		return (file == null)
 				? counter.topTenWords(text)
 				: counter.topTenWords(getFilePath(file));
+	}
+	
+	@PostMapping("/getWordsCount")
+	@ResponseBody
+	public Integer countWords(@RequestParam String text,
+							  @RequestParam(required = false) MultipartFile file) {
+		
+		return (file == null)
+				? counter.count(text)
+				: counter.count(getFilePath(file));
 	}
 	
 	private String getFilePath(MultipartFile file) {
