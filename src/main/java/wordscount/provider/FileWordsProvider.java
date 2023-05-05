@@ -13,8 +13,8 @@ public class FileWordsProvider implements WordsProvider {
 
 	@Override
 	public String[] getWords(String text) {
-
-		return convertToText(text).split("[\t\s\r\n,.-]");
+	  
+	   return convertToText(text).split("[\t\s\r\n,.-]");
 	}
 
 	private String convertToText(String path) {
